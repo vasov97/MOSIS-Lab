@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    static int NEW_PLACE=1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,9 +27,9 @@ public class MainActivity extends AppCompatActivity {
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                Intent i=new Intent(MainActivity.this,EditMyPlaceActivity.class);
+                startActivityForResult(i,NEW_PLACE);
             }
         });
     }
@@ -50,8 +51,11 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if(id==R.id.show_map_item)
             Toast.makeText(this,"Show Map!",Toast.LENGTH_SHORT).show();
-        else if(id==R.id.new_place_item)
-            Toast.makeText(this,"New Place!",Toast.LENGTH_SHORT).show();
+        else if(id==R.id.new_place_item){
+            Intent i=new Intent(this,EditMyPlaceActivity.class);
+            startActivityForResult(i,NEW_PLACE);
+        }
+
         else if(id==R.id.my_places_list_item) {
             Intent i = new Intent(this, MyPlacesList.class);
             startActivity(i);
@@ -63,5 +67,13 @@ public class MainActivity extends AppCompatActivity {
 
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected  void onActivityResult(int requestCode,int resultCode,Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode==RESULT_OK){
+            Toast.makeText(this,"New Place Added",Toast.LENGTH_SHORT).show();
+        }
     }
 }
