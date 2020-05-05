@@ -43,6 +43,10 @@ public class ViewMyPlaceActivity extends AppCompatActivity {
             twName.setText(place.getName());
             TextView twDesc=findViewById(R.id.viewmyplace_desc_text);
             twDesc.setText(place.getDescription());
+            TextView twLat=findViewById(R.id.viewmyplace_lat_text);
+            twLat.setText(place.getLatitude());
+            TextView twLon=findViewById(R.id.viewmyplace_lon_text);
+            twLon.setText(place.getLongitude());
 
         }
         final Button finishedButton=findViewById(R.id.viewmyplace_finished_button);

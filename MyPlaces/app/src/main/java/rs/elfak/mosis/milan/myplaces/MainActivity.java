@@ -50,8 +50,13 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if(id==R.id.show_map_item)
-            Toast.makeText(this,"Show Map!",Toast.LENGTH_SHORT).show();
-        else if(id==R.id.new_place_item){
+        {
+            Intent i = new Intent(this, MyPlacesMapsActivity.class);
+            i.putExtra("state", MyPlacesMapsActivity.SHOW_MAP);
+            startActivity(i);
+        }//Toast.makeText(this,"Show Map!",Toast.LENGTH_SHORT).show();
+        else if(id==R.id.new_place_item)
+        {
             Intent i=new Intent(this,EditMyPlaceActivity.class);
             startActivityForResult(i,NEW_PLACE);
         }
