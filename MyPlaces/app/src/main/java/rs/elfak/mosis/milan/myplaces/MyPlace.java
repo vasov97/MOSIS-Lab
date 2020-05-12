@@ -1,11 +1,16 @@
 package rs.elfak.mosis.milan.myplaces;
 
+import com.google.firebase.database.Exclude;
+
 public class MyPlace {
-    String name;
-    String description;
-    String longitude;
-    String latitude;
-    long ID;
+    public String name;
+    public String description;
+    public String longitude;
+    public String latitude;
+    @Exclude
+    public String key;
+
+    public MyPlace(){}
 
     public MyPlace(String name,String description){
         this.name=name;
@@ -15,27 +20,10 @@ public class MyPlace {
         this(name,"");
     }
 
-    public String getName(){
-        return this.name;
-    }
-    public void setName(String name){
-        this.name=name;
-    }
-    public String getDescription(){
-        return this.description;
-    }
-    public void setDescription(String description){
-        this.description=description;
-    }
+
     @Override
     public String toString(){
         return this.name;
     }
-    public String getLongitude(){return longitude;}
-    public void setLongitude(String longtitude){this.longitude=longtitude;}
-    public String getLatitude(){return latitude;}
-    public void setLatitude(String latitude){this.latitude=latitude;}
 
-    public long getID(){return ID;}
-    public void setID(long ID){this.ID = ID;}
 }
